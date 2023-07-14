@@ -51,13 +51,13 @@ class _LogInState extends State<LogIn> {
                 ),
               ),
               Form(
-                  child: Theme(
-                data: ThemeData(
-                    primaryColor: Colors.grey,
-                    inputDecorationTheme: InputDecorationTheme(
-                        labelStyle:
-                            TextStyle(color: Colors.teal, fontSize: 15.0))),
-                child: Container(
+                child: Theme(
+                  data: ThemeData(
+                      primaryColor: Colors.grey,
+                      inputDecorationTheme: InputDecorationTheme(
+                          labelStyle:
+                              TextStyle(color: Colors.teal, fontSize: 15.0))),
+                  child: Container(
                     padding: EdgeInsets.all(40.0),
                     child: Builder(builder: (context) {
                       return Column(
@@ -80,43 +80,54 @@ class _LogInState extends State<LogIn> {
                             height: 40.0,
                           ),
                           ButtonTheme(
-                              minWidth: 100.0,
-                              height: 50.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  if (controller.text == 'mei@hello.com' &&
-                                      controller2.text == '1234') {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                NextPage()));
-                                  } else if (controller.text ==
-                                          'mei@hello.com' &&
-                                      controller2.text != '1234') {
-                                    showSnackBar(
-                                        context, Text('Wrong password'));
-                                  } else if (controller.text !=
-                                          'mei@hello.com' &&
-                                      controller2.text == '1234') {
-                                    showSnackBar(context, Text('Wrong email'));
-                                  } else {
-                                    showSnackBar(
-                                        context, Text('Check your info again'));
-                                  }
-                                },
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  color: Colors.white,
-                                  size: 35.0,
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.orangeAccent),
-                              ))
+                            minWidth: 100.0,
+                            height: 50.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (controller.text == 'mei@hello.com' &&
+                                    controller2.text == '1234') {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          NextPage(),
+                                    ),
+                                  );
+                                } else if (controller.text == 'mei@hello.com' &&
+                                    controller2.text != '1234') {
+                                  showSnackBar(
+                                    context,
+                                    Text('Wrong password'),
+                                  );
+                                } else if (controller.text != 'mei@hello.com' &&
+                                    controller2.text == '1234') {
+                                  showSnackBar(
+                                    context,
+                                    Text('Wrong email'),
+                                  );
+                                } else {
+                                  showSnackBar(
+                                    context,
+                                    Text('Check your info again'),
+                                  );
+                                }
+                              },
+                              child: Icon(
+                                Icons.arrow_forward,
+                                color: Colors.white,
+                                size: 35.0,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orangeAccent,
+                              ),
+                            ),
+                          ),
                         ],
                       );
-                    })),
-              ))
+                    }),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -131,16 +142,21 @@ void showSnackBar(BuildContext context, Text text) {
     backgroundColor: Color.fromARGB(255, 112, 48, 48),
   );
 
-// Find the ScaffoldMessenger in the widget tree
-// and use it to show a SnackBar.
+  // Find the ScaffoldMessenger in the widget tree
+  // and use it to show a SnackBar.
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 
 class NextPage extends StatelessWidget {
-  const NextPage({Key key}) : super(key: key);
+  const NextPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Next Page'),
+      ),
+      body: Container(),
+    );
   }
 }
