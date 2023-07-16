@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
 class LogIn extends StatefulWidget {
   @override
   State<LogIn> createState() => _LogInState();
+  //_ 언더바는 사용하자 않는 클래스를 말한다
 }
 
 class _LogInState extends State<LogIn> {
